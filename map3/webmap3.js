@@ -1,47 +1,51 @@
 let map = L.map('map').setView([30.4515, -91.1871], 9)
 L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-  maxZoom: 19,
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
+  maxZoom: 19
 }).addTo(map)
 
 let seniorCentersUrl = 'https://opendata.arcgis.com/datasets/ca5cc72995064330ae19708f2cfaf134_0.geojson'
+//
+// let test1 = 'try2'
+// var redMarker = {
+//   stroke: false,
+//   radius: 8,
+//   fillColor: "#ff0000",
+//   fillOpacity: .4
+// }
+// var greenMarker = {
+//   stroke: false,
+//   radius: 10,
+//   fillColor: "#15560d",
+//   fillOpacity: .8
+// }
+var marker;
 
-let test1 = 'try2'
-var greenIcon = L.icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
-  // shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41]
-  // iconAnchor: [12, 41],
-  // popupAnchor: [1, -34],
-  // shadowSize: [41, 41]
-})
-var marker = L.marker([30.4515, -91.1871], {icon: greenIcon}).addTo(map);
-
-var centers;
 jQuery.getJSON(seniorCentersUrl, function (data) {
   let centerStyle = function (feature) {
     let city = feature.properties.CITY
-    // console.log('setting center style')
+    let color = '#ff0000'; //defaults to red
+    let fillOpacity = .4; //defaults to more transparent
 
-    if (city === 'BATON ROUGE') {
-      // console.log('trying blue icon')
-      return {
+    if(city == 'BATON ROUGE'){
+      color = '#15560d',
+      fillOpacity = .8
+    }
 
-      }
-    } else {
-      console.log('trying green icon')
-
-      return {
-        icon: greenIcon
-      }
+    return {
+      stroke: false,
+      radius: 10,
+      fillColor: color,
+      fillOpacity: fillOpacity
     }
   }
+
   let seniorCenterGeojsonOptions = {
     style: centerStyle,
-    onEachFeature: createPopup
+    onEachFeature: createPopup,
+    pointToLayer: createMarker
   }
-  centers = L.geoJSON(data, seniorCenterGeojsonOptions).addTo(map)
-  // L.marker(data, {icon: greenIcon}).toGeoJSON().addTo(map)
+
+  L.geoJSON(data, seniorCenterGeojsonOptions).addTo(map)
 })
 
 let createPopup = function (feature, layer) {
@@ -51,4 +55,8 @@ let createPopup = function (feature, layer) {
   let state = feature.properties.STATE
   let zip = feature.properties.ZIP
   layer.bindPopup('<b>Senior Center Name: </b>' + name + '<br><br>' + '<b> Address: </b>' + address + ', ' + city + ', ' + state + ', ' + zip)
+}
+
+let createMarker = function (feature, latlng) {
+  return L.circleMarker(latlng);
 }
