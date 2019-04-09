@@ -49,3 +49,11 @@ let createPopup = function (feature, layer) {
 let createMarker = function (feature, latlng) {
   return L.circleMarker(latlng)
 }
+
+//TODO search
+function searchName() {
+  console.log("hello");
+  var x = document.getElementById("searchInput");
+  document.getElementById("demo").innerHTML = "You are searching for: " + x.value;
+
+}
