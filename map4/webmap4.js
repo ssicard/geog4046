@@ -1,4 +1,6 @@
-let demoMap = L.Wrld.map('map4', '3fdeb51df3c639e929b0e6391503c9fc', {
+var wrldmapkey = config.WRLDMAP_KEY;
+
+let demoMap = L.Wrld.map('map4', wrldmapkey, {
     center: [29.95, -90.07],
     zoom: 15
   })
