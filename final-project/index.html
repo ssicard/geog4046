@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Senior Centers in Baton Rouge</title>
 
-    <link rel="stylesheet" type="text/css" href="./main.css">
+    <link rel="stylesheet" type="text/css" href="./style/main.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
@@ -24,15 +24,19 @@
 
         <div class="collapse navbar-collapse" id="navOptions">
           <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="dropdown-item" href="./about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="dropdown-item" href="./email.html">Emails</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Options
+                Filters
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="./about.html">About the Map</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#" id="filterBR">In Baton Rouge</a>
+                <a class="dropdown-item" href="#" id="filterNoBR">Not in Baton Rouge</a>
               </div>
             </li>
           </ul>
@@ -50,7 +54,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!-- <script src="./map.js"></script> -->
-    <script src="./worldmap.js"></script>
+    <script src="./map.js"></script>
   </body>
 </html>

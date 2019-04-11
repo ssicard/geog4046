@@ -1,0 +1,29 @@
+body{
+  background-color: #B1B6A6;
+  color: #000000
+}
+
+h1{
+  color: #2B176D
+}
+
+h3{
+  color: #696773
+}
+
+a.dropdown-item {
+  color: #FFF
+}
+
+div.dropdown-menu {
+  background-color: #696773
+}
+
+#map {
+  height: 80em
+}
+
+#logo{
+  width: 50px;
+  height: 50px;
+}

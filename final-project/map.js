@@ -6,7 +6,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 
 let seniorCentersUrl = 'https://opendata.arcgis.com/datasets/ca5cc72995064330ae19708f2cfaf134_0.geojson'
 
-jQuery.getJSON(seniorCentersUrl, function (data) {
+var promise = $.getJSON(seniorCentersUrl, function (data) {
   let centerStyle = function (feature) {
     let city = feature.properties.CITY
 
@@ -31,12 +31,30 @@ jQuery.getJSON(seniorCentersUrl, function (data) {
   let seniorCenterGeojsonOptions = {
     style: centerStyle,
     onEachFeature: createPopup,
-    pointToLayer: createMarker
+    pointToLayer: createMarker,
+    filter: addFilter
   }
 
   L.geoJSON(data, seniorCenterGeojsonOptions).addTo(map)
-})
+});
 
+promise.then(function(data) {
+    var allCenters = L.geoJson(data);
+      var brCenters = L.geoJson(data, {
+        filter: function(feature, layer) {
+          return feature.properties.CITY == "BATON ROUGE";
+        }
+      });
+      var noBrCenters = L.geoJson(data, {
+        filter: function(feature, layer) {
+          return feature.properties.CITY != "BATON ROUGE";
+        }
+      }
+});
+
+let addFilter(feature, layer){
+
+}
 let createPopup = function (feature, layer) {
   let name = feature.properties.NAME
   let address = feature.properties.FULL_ADDRESS
@@ -48,6 +66,7 @@ let createPopup = function (feature, layer) {
 
 let createMarker = function (feature, latlng) {
   return L.circleMarker(latlng)
+  //.on('mouseover', function() { this.bindPopup().openPopup()})
 }
 
 //TODO search
@@ -57,3 +76,7 @@ function searchName() {
   document.getElementById("demo").innerHTML = "You are searching for: " + x.value;
 
 }
+
+function filterBR() {
+  alert("Handler for .click() after reload was called.");
+};
