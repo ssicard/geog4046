@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <title>Senior Centers in Baton Rouge</title>
 
-    <link rel="stylesheet" type="text/css" href="./style/main.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style/main.css">
+
     <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
   </head>
@@ -46,6 +47,12 @@
           </form>
         </div>
       </nav>
+    </div>
+    <div class="btn-group">
+        <h3> Filters: </h3>
+        <button type="button" id="allCenters" class="btn btn-success">All Centers</button>
+        <button type="button" id="brCenters" class="btn btn-primary">Baton Rouge</button>
+        <button type="button" id="noBrCenters" class="btn btn-danger">Not In Baton Rouge</button>
     </div>
     <div id="map"></div>
 

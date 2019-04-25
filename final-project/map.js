@@ -12,12 +12,12 @@ var promise = $.getJSON(seniorCentersUrl, function (data) {
 
 
     //=======DEFAULTS========//
-    let color = '#B1B6A6'; //beige
-    let fillOpacity = .6; //more transparent
+    let color = '#696773'; //beige
+    let fillOpacity = .8; //more transparent
 
     if(city == 'BATON ROUGE'){
       color = '#819595', //greenish
-      fillOpacity = .8   //more solid
+      fillOpacity = 1   //more solid
     }
 
     return {
@@ -31,8 +31,7 @@ var promise = $.getJSON(seniorCentersUrl, function (data) {
   let seniorCenterGeojsonOptions = {
     style: centerStyle,
     onEachFeature: createPopup,
-    pointToLayer: createMarker,
-    filter: addFilter
+    pointToLayer: createMarker
   }
 
   L.geoJSON(data, seniorCenterGeojsonOptions).addTo(map)
@@ -49,12 +48,25 @@ promise.then(function(data) {
         filter: function(feature, layer) {
           return feature.properties.CITY != "BATON ROUGE";
         }
-      }
+      });
+      map.fitBounds(allCenters.getBounds());
+      brCenters.addTo(map);
+      noBrCenters.addTo(map);
+
+      $("#noBrCenters").click(function() {
+           map.addLayer(noBrCenters)
+           map.removeLayer(brCenters)
+       });
+       $("#brCenters").click(function() {
+           map.addLayer(brCenters)
+           map.removeLayer(noBrCenters)
+       });
+       $("#allCenters").click(function() {
+           map.addLayer(brCenters)
+           map.addLayer(noBrCenters)
+       });
 });
 
-let addFilter(feature, layer){
-
-}
 let createPopup = function (feature, layer) {
   let name = feature.properties.NAME
   let address = feature.properties.FULL_ADDRESS
@@ -65,18 +77,5 @@ let createPopup = function (feature, layer) {
 }
 
 let createMarker = function (feature, latlng) {
-  return L.circleMarker(latlng)
-  //.on('mouseover', function() { this.bindPopup().openPopup()})
+  return L.circleMarker(latlng);
 }
-
-//TODO search
-function searchName() {
-  console.log("hello");
-  var x = document.getElementById("searchInput");
-  document.getElementById("demo").innerHTML = "You are searching for: " + x.value;
-
-}
-
-function filterBR() {
-  alert("Handler for .click() after reload was called.");
-};
