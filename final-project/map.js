@@ -7,48 +7,62 @@ L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 let seniorCentersUrl = 'https://opendata.arcgis.com/datasets/ca5cc72995064330ae19708f2cfaf134_0.geojson'
 
 var promise = $.getJSON(seniorCentersUrl, function (data) {
-  let centerStyle = function (feature) {
-    let city = feature.properties.CITY
+  //
+  // let seniorCenterGeojsonOptions = {
+  //   style: centerStyle,
+  //   onEachFeature: createPopup,
+  //   pointToLayer: createMarker
+  // }
 
-
-    //=======DEFAULTS========//
-    let color = '#696773'; //beige
-    let fillOpacity = .8; //more transparent
-
-    if(city == 'BATON ROUGE'){
-      color = '#819595', //greenish
-      fillOpacity = 1   //more solid
-    }
-
-    return {
-      stroke: false,
-      radius: 10,
-      fillColor: color,
-      fillOpacity: fillOpacity
-    }
-  }
-
-  let seniorCenterGeojsonOptions = {
-    style: centerStyle,
-    onEachFeature: createPopup,
-    pointToLayer: createMarker
-  }
-
-  L.geoJSON(data, seniorCenterGeojsonOptions).addTo(map)
+  // L.geoJSON(data, seniorCenterGeojsonOptions).addTo(map)
 });
 
 promise.then(function(data) {
     var allCenters = L.geoJson(data);
-      var brCenters = L.geoJson(data, {
-        filter: function(feature, layer) {
-          return feature.properties.CITY == "BATON ROUGE";
-        }
-      });
-      var noBrCenters = L.geoJson(data, {
-        filter: function(feature, layer) {
-          return feature.properties.CITY != "BATON ROUGE";
-        }
-      });
+
+    // SETTING STYLE ELEMENTS //
+    let centerStyle = function (feature) {
+      let city = feature.properties.CITY
+
+
+      //=======DEFAULTS========//
+      let color = '#696773'; //beige
+      let fillOpacity = .8; //more transparent
+
+      if(city == 'BATON ROUGE'){
+        color = '#819595', //greenish
+        fillOpacity = 1   //more solid
+      }
+
+      return {
+        stroke: false,
+        radius: 10,
+        fillColor: color,
+        fillOpacity: fillOpacity
+      }
+    }
+
+    let brCenterGeojsonOptions = {
+      style: centerStyle,
+      onEachFeature: createPopup,
+      pointToLayer: createMarker,
+      filter: function(feature, layer) {
+        return feature.properties.CITY == "BATON ROUGE";
+      }
+    }
+
+    let noBrCenterGeojsonOptions = {
+      style: centerStyle,
+      onEachFeature: createPopup,
+      pointToLayer: createMarker,
+      filter: function(feature, layer) {
+        return feature.properties.CITY != "BATON ROUGE";
+      }
+    }
+
+    var brCenters = L.geoJson(data, brCenterGeojsonOptions);
+    var noBrCenters = L.geoJson(data, noBrCenterGeojsonOptions);
+
       map.fitBounds(allCenters.getBounds());
       brCenters.addTo(map);
       noBrCenters.addTo(map);

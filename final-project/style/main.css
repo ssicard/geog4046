@@ -24,14 +24,10 @@ div.dropdown-menu {
 }
 
 #map {
-  height: 80em
+  height: 60em;
 }
 
 #logo{
   width: 50px;
   height: 50px;
-}
-
-#filter{
-  text-align: center;
 }
