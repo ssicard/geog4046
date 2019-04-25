@@ -1,23 +1,15 @@
+// SETTING GLOBAL VARS //
+var brCenterCol = "#28502E";
+var noBrCenterCol = "#1B2F33";
+let seniorCentersUrl = 'https://opendata.arcgis.com/datasets/ca5cc72995064330ae19708f2cfaf134_0.geojson';
+
 let map = L.map('map').setView([30.5, -91.18], 10)
 L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
   maxZoom: 19
 }).addTo(map)
 
 
-let seniorCentersUrl = 'https://opendata.arcgis.com/datasets/ca5cc72995064330ae19708f2cfaf134_0.geojson'
-
-var promise = $.getJSON(seniorCentersUrl, function (data) {
-  //
-  // let seniorCenterGeojsonOptions = {
-  //   style: centerStyle,
-  //   onEachFeature: createPopup,
-  //   pointToLayer: createMarker
-  // }
-
-  // L.geoJSON(data, seniorCenterGeojsonOptions).addTo(map)
-});
-
-promise.then(function(data) {
+$.getJSON(seniorCentersUrl, function(data) {
     var allCenters = L.geoJson(data);
 
     // SETTING STYLE ELEMENTS //
@@ -26,11 +18,11 @@ promise.then(function(data) {
 
 
       //=======DEFAULTS========//
-      let color = '#696773'; //beige
+      let color = noBrCenterCol;
       let fillOpacity = .8; //more transparent
 
       if(city == 'BATON ROUGE'){
-        color = '#819595', //greenish
+        color = brCenterCol, //greenish
         fillOpacity = 1   //more solid
       }
 

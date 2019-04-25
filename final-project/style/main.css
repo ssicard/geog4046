@@ -2,13 +2,14 @@
   --main-color: #2B176D;
   --nt-1: #000000;
   --nt-2: #696773;
-  --sc-1: #819595;
-  --background-color: #B1B6A6;
+  --background-color: #819595;
+  --br-center: #28502E;
+  --no-br-center: #1B2F33;
 }
 
 body{
-  background-color: var(--nt-2);
-  color: var(--white);
+  background-color: var(--background-color);
+  color: var(--nt-1);
 }
 
 button {
