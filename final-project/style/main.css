@@ -1,27 +1,64 @@
 :root {
-  --main-color: #2B176D;
-  --nt-1: #000000;
-  --nt-2: #696773;
+  --main-color: #2b176d;
+  --light-black: #293132;
+  --gray: #4f5165;
+  --br-center: #2b176d;
+  --no-br-center: #547aa5;
+  --light-blue: #50d8d7;
   --background-color: #819595;
-  --br-center: #28502E;
-  --no-br-center: #1B2F33;
 }
 
 body{
   background-color: var(--background-color);
-  color: var(--nt-1);
+  color: var(--gray);
 }
 
 button {
   margin: 2%;
+  background-color: black;
+  color: #FFF;
+}
+
+a {
+  color: var(--light-blue);
 }
 
 a.dropdown-item {
   color: var(--white);
 }
 
+h1{
+  color: white;
+}
+
 div.dropdown-menu {
   background-color: var(--nt-2);
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+.body{
+  padding: 2%
 }
 
 #map {
@@ -31,4 +68,12 @@ div.dropdown-menu {
 #logo{
   width: 50px;
   height: 50px;
+}
+
+#brCenters{
+  background-color: var(--br-center);
+}
+
+#noBrCenters{
+  background-color: var(--no-br-center);
 }

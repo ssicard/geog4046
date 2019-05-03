@@ -3,11 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>About</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./style/main.css">
+
   </head>
   <body>
-    <h1> About the Senior Centers Map </h1>
-    <b> Dataset: </b> </br>
-    <b> Creator: </b> Sarah Sicard</br>
+    <div>
+      <nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #2b176d;">
+       <a class="navbar-brand" href="#">
+        <img class="d-inline-block mr-1" src="./images/house.png" alt="" style="height:50px; width:50px">
+        <a class="navbar-brand" href="./index.html"> Baton Rouge Senior Centers </a>
+      </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navOptions" aria-controls="navOptions" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navOptions">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="dropdown-item" href="./about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="body">
+      <h1> About the Senior Centers Map </h1>
+
+      <p> This application serves to map all senior centers in the Baton Rouge area through using information provided by <a href="https://data-ebrgis.opendata.arcgis.com/datasets/senior-citizen-center"> East Baton Rouge Parish. </a>
+        If you wish to download the dataset, <a href="https://opendata.arcgis.com/datasets/ca5cc72995064330ae19708f2cfaf134_0.geojson"> click here. </a></br>
+      </p>
+
+      <b> Creator: </b> Sarah Sicard</br>
+    </div>
   </body>
 </html>

@@ -12,7 +12,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
   </head>
   <body>
-    <!--TODO fix nav bar-->
     <div>
       <nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #2b176d;">
        <a class="navbar-brand" href="#">
@@ -26,37 +25,23 @@
         <div class="collapse navbar-collapse" id="navOptions">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="dropdown-item" href="./about.html">About</a>
+              <a class="dropdown-item" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="dropdown-item" href="./email.html">Emails</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filters
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#" id="filterBR">In Baton Rouge</a>
-                <a class="dropdown-item" href="#" id="filterNoBR">Not in Baton Rouge</a>
-              </div>
+              <a class="dropdown-item" href="./about.html">About</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Senior Center Name" aria-label="Search" id="searchInput">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="searchName()">Search</button>
-          </form>
         </div>
       </nav>
     </div>
-
     <div id="map"></div>
 
     <!-- TODO SET AS FOOTER -->
     <div class="btn-group">
         <h3> Filters: </h3>
-        <button type="button" id="allCenters" class="btn btn-success">All Centers</button>
-        <button type="button" id="brCenters" class="btn btn-primary">Baton Rouge</button>
-        <button type="button" id="noBrCenters" class="btn btn-danger">Not In Baton Rouge</button>
+        <button type="button" id="allCenters" class="btn">All Centers</button>
+        <button type="button" id="brCenters" class="btn">Baton Rouge</button>
+        <button type="button" id="noBrCenters" class="btn">Not In Baton Rouge</button>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
